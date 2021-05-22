@@ -7,14 +7,20 @@
     tools:context=".view.fragments.home.HomeFragment">
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_500"
+        android:paddingStart="20dp"
         android:clickable="true"
-        android:src="@drawable/ic_launcher_foreground"
+        android:focusable="true"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
+        android:text="ADD"
+        app:icon="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
