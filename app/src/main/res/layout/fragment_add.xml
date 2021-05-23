@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutHp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayoutHp"
         app:startIconDrawable="@drawable/ic_color">
 
         <AutoCompleteTextView
@@ -41,17 +41,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayoutName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/ic_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
+        app:helperText="*Required"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:startIconDrawable="@drawable/ic_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_et"
@@ -61,17 +67,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/textInputLayoutHp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutName"
         app:startIconDrawable="@drawable/ic_hp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -83,14 +91,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/textInputLayoutMaxSpeed"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout5"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
+        app:layout_constraintEnd_toStartOf="@+id/textInputYear"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
@@ -105,16 +115,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/textInputYear"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout4">
+        app:layout_constraintStart_toEndOf="@+id/textInputLayoutMaxSpeed"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayoutMaxSpeed">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/year_et"
@@ -131,15 +145,15 @@
         android:layout_marginTop="24dp"
         android:text="Favorite"
         app:buttonTint="@color/purple_500"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutMaxSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutMaxSpeed" />
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="add"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
+        app:layout_constraintEnd_toEndOf="@+id/textInputYear"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxFavorite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
