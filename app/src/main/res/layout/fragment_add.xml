@@ -19,22 +19,25 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/ic_color"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/ic_color">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/color_drop"
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Color"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:text="Blue" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +65,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayout5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +109,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,10 +118,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/year_et"
-            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year" />
+            android:hint="Year"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
