@@ -30,5 +30,8 @@
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="carModel"
+            app:argType="com.emreozcan.favoritecars.data.models.CarModel" />
     </fragment>
 </navigation>

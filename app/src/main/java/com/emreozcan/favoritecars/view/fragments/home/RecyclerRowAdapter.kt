@@ -3,6 +3,8 @@ package com.emreozcan.favoritecars.view.fragments.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
@@ -31,6 +33,10 @@ class RecyclerRowAdapter: RecyclerView.Adapter<RecyclerRowAdapter.ViewHolder>(){
         holder.itemView.cardImage.setImageBitmap(dataList[position].image)
         if (dataList[position].isFavorite){
             holder.itemView.favoriteStar.visibility = View.VISIBLE
+        }
+        holder.itemView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(dataList[position])
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

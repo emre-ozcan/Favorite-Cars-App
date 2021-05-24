@@ -170,6 +170,24 @@ class AddFragment : Fragment() {
             }
         }
     }
+    fun parseColor(color: String): Colors {
+        return when(color){
+            "White"->{
+                Colors.WHITE}
+            "Black"->{
+                Colors.BLACK}
+            "Blue"->{
+                Colors.BLUE}
+            "Red"->{
+                Colors.RED}
+            "Green"->{
+                Colors.GREEN}
+            "Yellow"->{
+                Colors.YELLOW}
+            else->{
+                Colors.GREY}
+        }
+    }
 
     override fun onResume() {
         super.onResume()
@@ -183,16 +201,5 @@ class AddFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-    fun parseColor(color: String): Colors{
-        return when(color){
-            "White"->{Colors.WHITE}
-            "Black"->{Colors.BLACK}
-            "Blue"->{Colors.BLUE}
-            "Red"->{Colors.RED}
-            "Green"->{Colors.GREEN}
-            "Yellow"->{Colors.YELLOW}
-            else->{Colors.GREY}
-        }
     }
 }

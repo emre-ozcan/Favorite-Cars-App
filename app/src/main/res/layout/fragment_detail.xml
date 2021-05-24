@@ -18,37 +18,46 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/detail_textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/ic_color"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/detail_textInputLayoutHp"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutHp"
+        app:startIconDrawable="@drawable/ic_color">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/color_drop"
+        <AutoCompleteTextView
+            android:id="@+id/detail_autoCompleteTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Color" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:text="Blue" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        app:startIconDrawable="@drawable/ic_name"
+        android:id="@+id/detail_textInputLayoutName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
+        app:helperText="*Required"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_imageView">
+        app:layout_constraintTop_toBottomOf="@+id/detail_imageView"
+        app:startIconDrawable="@drawable/ic_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/detail_name_et"
@@ -58,64 +67,76 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/detail_textInputLayoutHp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintStart_toEndOf="@+id/detail_textInputLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutName"
         app:startIconDrawable="@drawable/ic_hp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/detail_hp_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="HP" />
+            android:hint="HP"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/detail_textInputLayoutMaxSpeed"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout5"
+        android:layout_marginEnd="8dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
+        app:layout_constraintEnd_toStartOf="@+id/detail_textInputYear"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayout3"
         app:startIconDrawable="@drawable/ic_maxspeed">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/detail_max_speed_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Max Speed" />
+            android:hint="Max Speed"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/detail_textInputYear"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout4">
+        app:layout_constraintStart_toEndOf="@+id/detail_textInputLayoutMaxSpeed"
+        app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutMaxSpeed"
+        app:startIconDrawable="@drawable/ic_time">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/detail_year_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Year" />
+            android:hint="Year"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -123,38 +144,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:buttonTint="@color/purple_500"
         android:text="Favorite"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:buttonTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="@+id/detail_textInputLayoutMaxSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutMaxSpeed" />
 
     <Button
-        android:id="@+id/detail_buttonSave"
-        android:layout_width="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        app:icon="@drawable/ic_save"
-        android:layout_height="0dp"
-        android:text="save"
-        app:layout_constraintBottom_toBottomOf="@+id/detail_buttonDelete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/detail_buttonDelete"
-        app:layout_constraintTop_toTopOf="@+id/detail_buttonDelete" />
-
-    <Button
-        android:id="@+id/detail_buttonDelete"
+        android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:text="save"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        app:icon="@drawable/ic_save"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonDelete" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red"
+        android:text="Delete"
         app:icon="@drawable/ic_delete"
-        android:text="delete"
-        android:textColor="@color/red"
-        app:iconTint="@color/red"
-        app:strokeColor="#F8A6A6"
-        app:layout_constraintEnd_toStartOf="@+id/detail_buttonSave"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSave"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_checkBoxFavorite" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
