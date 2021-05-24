@@ -25,7 +25,8 @@ import com.emreozcan.favoritecars.data.models.CarModel
 import com.emreozcan.favoritecars.data.models.Colors
 import com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel
 import com.emreozcan.favoritecars.databinding.FragmentDetailBinding
-import kotlinx.android.synthetic.main.fragment_add.*
+import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter
+import java.util.ArrayList
 
 
 class DetailFragment : Fragment() {
@@ -57,6 +58,7 @@ class DetailFragment : Fragment() {
         binding.detailYearEt.setText(carModel.year.toString())
         binding.detailImageView.setImageBitmap(carModel.image)
         selectedImageBitmap = carModel.image
+        binding.detailAutoCompleteTextView.setText(args.carModel.color.toString())
 
         textInputLayoutFunc()
 
@@ -132,19 +134,19 @@ class DetailFragment : Fragment() {
     fun parseColor(color: String): Colors {
         return when(color){
             "White"->{
-                Colors.WHITE}
+                Colors.White}
             "Black"->{
-                Colors.BLACK}
+                Colors.Black}
             "Blue"->{
-                Colors.BLUE}
+                Colors.Blue}
             "Red"->{
-                Colors.RED}
+                Colors.Red}
             "Green"->{
-                Colors.GREEN}
+                Colors.Green}
             "Yellow"->{
-                Colors.YELLOW}
+                Colors.Yellow}
             else->{
-                Colors.GREY}
+                Colors.Grey}
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -191,5 +193,15 @@ class DetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val colors = resources.getStringArray(R.array.colors).toCollection(ArrayList())
+        val colorAdapter = ColorAdapter(requireContext(),colors)
+
+        binding.detailAutoCompleteTextView.setAdapter(colorAdapter)
+
     }
 }

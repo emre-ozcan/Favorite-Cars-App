@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.emreozcan.favoritecars.data.models.CarModel
 
-@Database(entities = [CarModel::class],version = 1,exportSchema = false)
+@Database(entities = [CarModel::class],version = 2,exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class CarDatabase: RoomDatabase() {
     abstract fun carDao(): CarDao

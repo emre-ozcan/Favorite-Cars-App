@@ -27,7 +27,6 @@ import com.emreozcan.favoritecars.databinding.FragmentAddBinding
 import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter
 import kotlinx.android.synthetic.main.fragment_add.*
 import java.util.ArrayList
-import java.util.jar.Manifest
 
 
 class AddFragment : Fragment() {
@@ -173,19 +172,19 @@ class AddFragment : Fragment() {
     fun parseColor(color: String): Colors {
         return when(color){
             "White"->{
-                Colors.WHITE}
+                Colors.White}
             "Black"->{
-                Colors.BLACK}
+                Colors.Black}
             "Blue"->{
-                Colors.BLUE}
+                Colors.Blue}
             "Red"->{
-                Colors.RED}
+                Colors.Red}
             "Green"->{
-                Colors.GREEN}
+                Colors.Green}
             "Yellow"->{
-                Colors.YELLOW}
+                Colors.Yellow}
             else->{
-                Colors.GREY}
+                Colors.Grey}
         }
     }
 
