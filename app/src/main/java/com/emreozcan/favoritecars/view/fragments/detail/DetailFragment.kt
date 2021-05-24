@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -59,6 +60,9 @@ class DetailFragment : Fragment() {
         binding.detailImageView.setImageBitmap(carModel.image)
         selectedImageBitmap = carModel.image
         binding.detailAutoCompleteTextView.setText(args.carModel.color.toString())
+
+        val carAnim = AnimationUtils.loadAnimation(requireContext(),R.anim.alpha_anim)
+        binding.detailImageView.startAnimation(carAnim)
 
         textInputLayoutFunc()
 
