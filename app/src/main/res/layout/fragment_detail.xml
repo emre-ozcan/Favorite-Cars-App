@@ -1,181 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragments.detail.DetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="car"
+            type="com.emreozcan.favoritecars.data.models.CarModel"/>
+        <variable
+            name="detailFragmentViewModel"
+            type="com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.detail.DetailFragment">
 
 
-    <ImageView
-        android:id="@+id/detail_imageView"
-        android:layout_width="251dp"
-        android:layout_height="221dp"
-        android:src="@drawable/ic_add_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/detail_imageView"
+            android:layout_width="251dp"
+            android:layout_height="221dp"
+            android:setImageViewFromBitmap="@{car.image}"
+            android:src="@drawable/ic_add_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/detail_textInputLayoutHp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutHp"
-        app:startIconDrawable="@drawable/ic_color">
-
-        <AutoCompleteTextView
-            android:id="@+id/detail_autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:inputType="none"
-            android:text="Blue" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_textInputLayoutName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        app:counterEnabled="true"
-        app:endIconMode="clear_text"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_error"
-        app:helperText="*Required"
-        app:helperTextTextColor="@color/red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_imageView"
-        app:startIconDrawable="@drawable/ic_name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/detail_name_et"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detail_textInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Name" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/detail_textInputLayoutHp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutHp"
+            app:startIconDrawable="@drawable/ic_color">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_textInputLayoutHp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_error"
-        app:suffixText="hp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/detail_textInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutName"
-        app:startIconDrawable="@drawable/ic_hp">
+            <AutoCompleteTextView
+                android:id="@+id/detail_autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="none"
+                android:text="@{car.color.toString()}" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/detail_hp_et"
-            android:layout_width="match_parent"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detail_textInputLayoutName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="HP"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:helperText="*Required"
+            app:helperTextTextColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_imageView"
+            app:startIconDrawable="@drawable/ic_name">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_textInputLayoutMaxSpeed"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_error"
-        app:suffixText="km/h"
-        app:layout_constraintEnd_toStartOf="@+id/detail_textInputYear"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayout3"
-        app:startIconDrawable="@drawable/ic_maxspeed">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detail_name_et"
+                android:text="@{car.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/detail_max_speed_et"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detail_textInputLayoutHp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Max Speed"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:suffixText="hp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/detail_textInputLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutName"
+            app:startIconDrawable="@drawable/ic_hp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_textInputYear"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="32dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="4"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/detail_textInputLayoutMaxSpeed"
-        app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutMaxSpeed"
-        app:startIconDrawable="@drawable/ic_time">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detail_hp_et"
+                android:layout_width="match_parent"
+                android:text="@{String.valueOf(car.hp)}"
+                android:layout_height="wrap_content"
+                android:hint="HP"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/detail_year_et"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detail_textInputLayoutMaxSpeed"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Year"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:suffixText="km/h"
+            app:layout_constraintEnd_toStartOf="@+id/detail_textInputYear"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayout3"
+            app:startIconDrawable="@drawable/ic_maxspeed">
 
-    <CheckBox
-        android:id="@+id/detail_checkBoxFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Favorite"
-        app:buttonTint="@color/purple_500"
-        app:layout_constraintStart_toStartOf="@+id/detail_textInputLayoutMaxSpeed"
-        app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutMaxSpeed" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detail_max_speed_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(car.maxSpeed)}"
+                android:hint="Max Speed"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        app:icon="@drawable/ic_save"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonDelete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonDelete" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detail_textInputYear"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="4"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/detail_textInputLayoutMaxSpeed"
+            app:layout_constraintTop_toTopOf="@+id/detail_textInputLayoutMaxSpeed"
+            app:startIconDrawable="@drawable/ic_time">
 
-    <Button
-        android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/red"
-        android:text="Delete"
-        app:icon="@drawable/ic_delete"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSave"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_checkBoxFavorite" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detail_year_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(car.year)}"
+                android:hint="Year"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/detail_checkBoxFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:isCheckBoxChecked="@{car.favorite}"
+            android:text="Favorite"
+            app:buttonTint="@color/purple_500"
+            app:layout_constraintStart_toStartOf="@+id/detail_textInputLayoutMaxSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/detail_textInputLayoutMaxSpeed" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            app:icon="@drawable/ic_save"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonDelete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonDelete" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/red"
+            android:text="Delete"
+            carModel="@{car}"
+            detailFragmentViewModel="@{detailFragmentViewModel}"
+            app:icon="@drawable/ic_delete"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSave"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_checkBoxFavorite" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

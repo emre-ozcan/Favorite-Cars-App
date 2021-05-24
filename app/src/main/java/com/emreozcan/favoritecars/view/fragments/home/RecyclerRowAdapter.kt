@@ -13,31 +13,30 @@ import kotlinx.android.synthetic.main.row_recycler_design.view.*
 import java.util.ArrayList
 
 class RecyclerRowAdapter: RecyclerView.Adapter<RecyclerRowAdapter.ViewHolder>(){
-    var dataList = emptyList<CarModel>()
+    private var dataList = emptyList<CarModel>()
 
-    class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(private val binding: RowRecyclerDesignBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(car: CarModel){
+            binding.car = car
+            binding.executePendingBindings()
+        }
+        companion object{
+            fun from(parent: ViewGroup):ViewHolder{
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = RowRecyclerDesignBinding.inflate(layoutInflater,parent,false)
+                return ViewHolder(binding)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.row_recycler_design,parent,false)
 
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.cardTitle.text = dataList[position].name
-        holder.itemView.cardHp.text = "${dataList[position].hp} hp"
-        holder.itemView.cardMaxSpeed.text = "${dataList[position].maxSpeed} km/h"
-        holder.itemView.cardTime.text = dataList[position].year.toString()
-        holder.itemView.cardImage.setImageBitmap(dataList[position].image)
-        if (dataList[position].isFavorite){
-            holder.itemView.favoriteStar.visibility = View.VISIBLE
-        }
-        holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(dataList[position])
-            Navigation.findNavController(it).navigate(action)
-        }
+        val currentCar = dataList[position]
+        holder.bind(currentCar)
     }
 
     fun setDataToRecycler(carList: ArrayList<CarModel>){

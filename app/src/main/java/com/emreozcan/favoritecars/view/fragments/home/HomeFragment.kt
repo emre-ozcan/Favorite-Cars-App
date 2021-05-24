@@ -34,6 +34,10 @@ class HomeFragment : Fragment() {
         setHasOptionsMenu(true)
 
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding.lifecycleOwner = this
+        binding.homeFragmentViewModel = homeFragmentViewModel
+
+
 
         createRecycler()
 
@@ -42,29 +46,8 @@ class HomeFragment : Fragment() {
             adapter.setDataToRecycler(it as ArrayList<CarModel>)
         })
 
-        binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_addFragment)
-        }
-
-        homeFragmentViewModel.emptyDatabase.observe(viewLifecycleOwner, Observer {
-            showEmptyDatabase(it)
-        })
-
-
 
         return binding.root
-    }
-
-    private fun showEmptyDatabase(emptyDatabase: Boolean) {
-        if (emptyDatabase){
-            binding.imageViewEmpty.visibility = View.VISIBLE
-            binding.textViewEmpty.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.INVISIBLE
-        }else{
-            binding.imageViewEmpty.visibility = View.INVISIBLE
-            binding.textViewEmpty.visibility = View.INVISIBLE
-            binding.recyclerView.visibility = View.VISIBLE
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

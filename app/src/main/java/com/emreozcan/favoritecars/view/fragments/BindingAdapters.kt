@@ -1,23 +1,41 @@
 package com.emreozcan.favoritecars.view.fragments
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.view.View
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.emreozcan.favoritecars.R
+import com.emreozcan.favoritecars.data.models.CarModel
+import com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel
+import com.emreozcan.favoritecars.view.fragments.home.HomeFragmentDirections
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BindingAdapters {
     companion object{
+
+
         @BindingAdapter("android:navigateToAddFragment")
         @JvmStatic
-        fun navigateToAddFragment(view: FloatingActionButton,navigate: Boolean){
+        fun navigateToAddFragment(view: ExtendedFloatingActionButton,navigate: Boolean){
             view.setOnClickListener {
                 if (navigate){
                     view.findNavController().navigate(R.id.action_homeFragment_to_addFragment)
                 }
             }
         }
+
+
         @BindingAdapter("android:isEmptyDatabase")
         @JvmStatic
         fun emptyDatabase(view: View,emptyDatabase: MutableLiveData<Boolean>){
@@ -26,5 +44,43 @@ class BindingAdapters {
                 false->view.visibility= View.INVISIBLE
             }
         }
+
+
+        @BindingAdapter("android:setImageViewFromBitmap")
+        @JvmStatic
+        fun setImage(view: ImageView,bitmap: Bitmap){
+            view.setImageBitmap(bitmap)
+        }
+
+        @BindingAdapter("android:isCheckBoxChecked")
+        @JvmStatic
+        fun isChecked(view: CheckBox,value: Boolean){
+            view.isChecked = value
+        }
+
+
+        @BindingAdapter(value = ["carModel","detailFragmentViewModel"])
+        @JvmStatic
+        fun deleteCar(view: Button,carModel: CarModel,detailFragmentViewModel: DetailFragmentViewModel){
+            view.setOnClickListener {
+                detailFragmentViewModel.deleteCar(carModel)
+                Toast.makeText(it.context,"Car Deleted !", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
+            }
+        }
+
+
+        @BindingAdapter("android:sendDataToDetails")
+        @JvmStatic
+        fun startAction(view: CardView,carModel: CarModel){
+            view.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(carModel)
+                view.findNavController().navigate(action)
+            }
+
+        }
+
+
+
     }
 }

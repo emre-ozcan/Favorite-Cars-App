@@ -50,27 +50,19 @@ class DetailFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater,container,false)
+        binding.car = args.carModel
+        binding.detailFragmentViewModel = detailFragmentViewModel
 
         val carModel = args.carModel
-        binding.detailCheckBoxFavorite.isChecked = carModel.isFavorite
-        binding.detailNameEt.setText(carModel.name)
-        binding.detailHpEt.setText(carModel.hp.toString())
-        binding.detailMaxSpeedEt.setText(carModel.maxSpeed.toString())
-        binding.detailYearEt.setText(carModel.year.toString())
-        binding.detailImageView.setImageBitmap(carModel.image)
+
+
         selectedImageBitmap = carModel.image
-        binding.detailAutoCompleteTextView.setText(args.carModel.color.toString())
 
         val carAnim = AnimationUtils.loadAnimation(requireContext(),R.anim.alpha_anim)
         binding.detailImageView.startAnimation(carAnim)
 
         textInputLayoutFunc()
 
-        binding.buttonDelete.setOnClickListener {
-            detailFragmentViewModel.deleteCar(carModel)
-            Toast.makeText(requireContext(),"Car Deleted !",Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
-        }
         binding.detailImageView.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),READ_PERMISSION)
