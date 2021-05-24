@@ -56,6 +56,17 @@ class AddFragment : Fragment() {
                 startActivityForResult(galleryIntent,GALLERY_CODE)
             }
         }
+
+        textInputLayoutFunc()
+
+        binding.buttonAdd.setOnClickListener {
+            insertCar()
+        }
+
+        return binding.root
+    }
+
+    private fun textInputLayoutFunc() {
         binding.nameEt.doOnTextChanged { text, start, before, count ->
             binding.textInputLayoutName.error = null
         }
@@ -66,10 +77,6 @@ class AddFragment : Fragment() {
             binding.textInputLayoutMaxSpeed.error = null
         }
 
-        binding.buttonAdd.setOnClickListener {
-            insertCar()
-        }
-
         binding.yearEt.doOnTextChanged { text, start, before, count ->
             if (text!!.length!=4){
                 binding.textInputYear.error="It should be a year !"
@@ -77,8 +84,6 @@ class AddFragment : Fragment() {
                 binding.textInputYear.error = null
             }
         }
-
-        return binding.root
     }
 
     private fun insertCar() {
@@ -126,6 +131,7 @@ class AddFragment : Fragment() {
             val car = CarModel(0,name,parseColor(color),hp,maxspeed,year,favorite,selectedImageBitmap!!)
             addFragmentViewModel.insertCar(car)
             Toast.makeText(requireContext(),"Car Saved",Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_addFragment_to_homeFragment)
         }
     }
 

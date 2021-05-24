@@ -1,10 +1,7 @@
 package com.emreozcan.favoritecars.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.emreozcan.favoritecars.data.models.CarModel
 
 
@@ -15,4 +12,7 @@ interface CarDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertData(carModel: CarModel)
+
+    @Query("DELETE FROM car_table")
+    suspend fun deleteAll()
 }

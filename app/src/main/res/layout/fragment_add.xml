@@ -127,6 +127,7 @@
         app:counterMaxLength="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:startIconDrawable="@drawable/ic_time"
         app:layout_constraintStart_toEndOf="@+id/textInputLayoutMaxSpeed"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutMaxSpeed">
 
