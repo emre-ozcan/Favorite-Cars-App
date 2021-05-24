@@ -30,4 +30,15 @@ class HomeFragmentViewModel(application: Application): AndroidViewModel(applicat
             repository.deleteAllDatabase()
         }
     }
+    fun deleteCar(carModel: CarModel){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteCar(carModel)
+        }
+    }
+    fun insertCar(carModel: CarModel){
+        viewModelScope.launch(Dispatchers.IO ) {
+            repository.insertData(carModel)
+        }
+
+    }
 }

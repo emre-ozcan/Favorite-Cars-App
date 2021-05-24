@@ -77,6 +77,8 @@ class DetailFragment : Fragment() {
         }
 
 
+
+
         return binding.root
     }
     private fun updateCar() {
@@ -186,18 +188,22 @@ class DetailFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val colors = resources.getStringArray(R.array.colors).toCollection(ArrayList())
+        val colorAdapter = ColorAdapter(requireContext(),colors)
+        binding.detailAutoCompleteTextView.setText(args.carModel.color.toString())
+
+        binding.detailAutoCompleteTextView.setAdapter(colorAdapter)
+
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        val colors = resources.getStringArray(R.array.colors).toCollection(ArrayList())
-        val colorAdapter = ColorAdapter(requireContext(),colors)
 
-        binding.detailAutoCompleteTextView.setAdapter(colorAdapter)
-
-    }
 }
