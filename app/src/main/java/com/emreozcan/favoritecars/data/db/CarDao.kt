@@ -22,4 +22,7 @@ interface CarDao {
     @Update
     suspend fun updateCar(carModel: CarModel)
 
+    @Query("SELECT * FROM car_table WHERE name LIKE :searchQuery")
+    fun searchItems(searchQuery: String): LiveData<List<CarModel>>
+
 }

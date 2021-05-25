@@ -3,6 +3,8 @@ package com.emreozcan.favoritecars.view.fragments.home
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,12 +15,13 @@ import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
 import com.emreozcan.favoritecars.data.viewmodel.HomeFragmentViewModel
 import com.emreozcan.favoritecars.databinding.FragmentHomeBinding
+import com.emreozcan.favoritecars.utils.observeOnce
 import com.emreozcan.favoritecars.view.fragments.home.adapter.RecyclerRowAdapter
 import com.google.android.material.snackbar.Snackbar
 import java.util.ArrayList
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),SearchView.OnQueryTextListener {
 
     private var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding!!
@@ -51,9 +54,13 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.toolbar_menu,menu)
+
+        val search = menu.findItem(R.id.action_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
@@ -62,13 +69,35 @@ class HomeFragment : Fragment() {
 
         return super.onOptionsItemSelected(item)
     }
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query != null){
+            searchIntoDatabase(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if (query != null){
+            searchIntoDatabase(query)
+        }
+        return true
+    }
+
+    private fun searchIntoDatabase(query: String) {
+        val searchString = "%$query%"
+
+        homeFragmentViewModel.searchDatabase(searchString).observeOnce(viewLifecycleOwner, Observer { list->
+            list.let {
+                adapter.setDataToRecycler(it as ArrayList<CarModel>)
+            }
+        })
+    }
+
     private fun createRecycler(){
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
         swipeToDelete()
-
-
 
     }
 
@@ -98,5 +127,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 }

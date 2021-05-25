@@ -25,4 +25,8 @@ class CarRepository(private val carDao: CarDao) {
         carDao.updateCar(carModel)
     }
 
+    fun searchItems(query: String): LiveData<List<CarModel>>{
+        return carDao.searchItems(query)
+    }
+
 }

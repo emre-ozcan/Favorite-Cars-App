@@ -41,4 +41,8 @@ class HomeFragmentViewModel(application: Application): AndroidViewModel(applicat
         }
 
     }
+
+    fun searchDatabase(query: String):LiveData<List<CarModel>>{
+        return repository.searchItems(query)
+    }
 }
