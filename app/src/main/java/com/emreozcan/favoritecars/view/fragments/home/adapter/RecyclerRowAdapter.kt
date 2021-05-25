@@ -2,6 +2,7 @@ package com.emreozcan.favoritecars.view.fragments.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.emreozcan.favoritecars.data.models.CarModel
 import com.emreozcan.favoritecars.databinding.RowRecyclerDesignBinding
@@ -35,8 +36,10 @@ class RecyclerRowAdapter: RecyclerView.Adapter<RecyclerRowAdapter.ViewHolder>(){
     }
 
     fun setDataToRecycler(carList: ArrayList<CarModel>){
+        val carDiffUtil = CarDiffUtil(dataList,carList)
+        val carDiffResult = DiffUtil.calculateDiff(carDiffUtil)
         dataList = carList
-        notifyDataSetChanged()
+        carDiffResult.dispatchUpdatesTo(this)
     }
 
     override fun getItemCount(): Int {

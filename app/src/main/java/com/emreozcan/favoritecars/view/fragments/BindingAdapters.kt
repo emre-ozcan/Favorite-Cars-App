@@ -3,10 +3,7 @@ package com.emreozcan.favoritecars.view.fragments
 import android.content.Context
 import android.graphics.Bitmap
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
@@ -78,6 +75,11 @@ class BindingAdapters {
                 view.findNavController().navigate(action)
             }
 
+        }
+        @BindingAdapter("android:showStar")
+        @JvmStatic
+        fun showStar(view: ImageButton, isFavorite: Boolean){
+            if(isFavorite) view.visibility = View.VISIBLE
         }
 
 
