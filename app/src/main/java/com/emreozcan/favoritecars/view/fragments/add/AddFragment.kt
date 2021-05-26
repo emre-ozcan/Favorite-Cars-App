@@ -21,8 +21,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.models.Colors
 import com.emreozcan.favoritecars.data.viewmodel.AddFragmentViewModel
+import com.emreozcan.favoritecars.data.viewmodel.SharedViewModel
 import com.emreozcan.favoritecars.databinding.FragmentAddBinding
 import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter
 import kotlinx.android.synthetic.main.fragment_add.*
@@ -32,6 +32,7 @@ import java.util.ArrayList
 class AddFragment : Fragment() {
 
     private val addFragmentViewModel: AddFragmentViewModel by viewModels()
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     private var _binding: FragmentAddBinding?=null
     private val binding get() = _binding!!
@@ -56,7 +57,7 @@ class AddFragment : Fragment() {
             }
         }
 
-        textInputLayoutFunc()
+        textInputLayoutFunctions()
 
         binding.buttonAdd.setOnClickListener {
             insertCar()
@@ -65,7 +66,7 @@ class AddFragment : Fragment() {
         return binding.root
     }
 
-    private fun textInputLayoutFunc() {
+    private fun textInputLayoutFunctions() {
         binding.nameEt.doOnTextChanged { text, start, before, count ->
             binding.textInputLayoutName.error = null
         }
@@ -127,7 +128,7 @@ class AddFragment : Fragment() {
             imageView.setImageResource(R.drawable.ic_image_error)
         }
         if (check){
-            val car = CarModel(0,name,parseColor(color),hp,maxspeed,year,favorite,selectedImageBitmap!!)
+            val car = CarModel(0,name,sharedViewModel.parseColor(color),hp,maxspeed,year,favorite,selectedImageBitmap!!)
             addFragmentViewModel.insertCar(car)
             Toast.makeText(requireContext(),"Car Saved",Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addFragment_to_homeFragment)
@@ -167,24 +168,6 @@ class AddFragment : Fragment() {
                 }
 
             }
-        }
-    }
-    fun parseColor(color: String): Colors {
-        return when(color){
-            "White"->{
-                Colors.White}
-            "Black"->{
-                Colors.Black}
-            "Blue"->{
-                Colors.Blue}
-            "Red"->{
-                Colors.Red}
-            "Green"->{
-                Colors.Green}
-            "Yellow"->{
-                Colors.Yellow}
-            else->{
-                Colors.Grey}
         }
     }
 

@@ -8,6 +8,28 @@
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item
+        android:id="@+id/action_favorite"
+        android:title="Favorite Cars"/>
+    <item
+        android:id="@+id/action_color"
+        android:title="Sort by Color"/>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_speed"
+            android:title="Sort by Speed">
+            <menu>
+                <item
+                    android:id="@+id/action_fastest"
+                    android:title="Fastest"/>
+                <item
+                    android:id="@+id/action_slowest"
+                    android:title="Slowest"/>
+            </menu>
+        </item>
+
+    </group>
+    <item
         android:id="@+id/action_delete"
         android:title="Delete All" />
+
 </menu>

@@ -41,8 +41,6 @@ class HomeFragment : Fragment(),SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
         binding.homeFragmentViewModel = homeFragmentViewModel
 
-
-
         createRecycler()
 
         homeFragmentViewModel.getAllData.observe(viewLifecycleOwner, Observer {
@@ -65,8 +63,28 @@ class HomeFragment : Fragment(),SearchView.OnQueryTextListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_delete->homeFragmentViewModel.deleteDatabase()
-        }
+            R.id.action_favorite->homeFragmentViewModel.searchFavorites().observeOnce(viewLifecycleOwner,
+                Observer {
+                    adapter.setDataToRecycler(it as ArrayList<CarModel>)
+                    binding.recyclerView.scheduleLayoutAnimation()
+                })
+            R.id.action_color->homeFragmentViewModel.searchForColor().observeOnce(viewLifecycleOwner,
+                Observer {
+                    adapter.setDataToRecycler(it as ArrayList<CarModel>)
+                    binding.recyclerView.scheduleLayoutAnimation()
+                })
+            R.id.action_slowest->homeFragmentViewModel.searchForSlowestCar().observeOnce(viewLifecycleOwner,
+                Observer {
+                    adapter.setDataToRecycler(it as ArrayList<CarModel>)
+                    binding.recyclerView.scheduleLayoutAnimation()
+                })
+            R.id.action_fastest->homeFragmentViewModel.searchForFastestCar().observeOnce(viewLifecycleOwner,
+                Observer {
+                    adapter.setDataToRecycler(it as ArrayList<CarModel>)
+                    binding.recyclerView.scheduleLayoutAnimation()
+                })
 
+        }
         return super.onOptionsItemSelected(item)
     }
     override fun onQueryTextSubmit(query: String?): Boolean {

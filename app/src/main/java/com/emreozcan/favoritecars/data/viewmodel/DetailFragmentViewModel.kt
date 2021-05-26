@@ -1,8 +1,14 @@
 package com.emreozcan.favoritecars.data.viewmodel
 
 import android.app.Application
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.db.CarDatabase
 import com.emreozcan.favoritecars.data.models.CarModel
 import com.emreozcan.favoritecars.data.repository.CarRepository

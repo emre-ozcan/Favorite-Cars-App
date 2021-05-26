@@ -45,4 +45,20 @@ class HomeFragmentViewModel(application: Application): AndroidViewModel(applicat
     fun searchDatabase(query: String):LiveData<List<CarModel>>{
         return repository.searchItems(query)
     }
+
+    fun searchForFastestCar():LiveData<List<CarModel>>{
+        return repository.searchForFastestCar()
+    }
+
+    fun searchForSlowestCar():LiveData<List<CarModel>>{
+        return repository.searchForSlowestCar()
+    }
+
+    fun searchForColor():LiveData<List<CarModel>>{
+        return repository.searchForColor()
+    }
+
+    fun searchFavorites(): LiveData<List<CarModel>>{
+        return repository.searchFavorites()
+    }
 }

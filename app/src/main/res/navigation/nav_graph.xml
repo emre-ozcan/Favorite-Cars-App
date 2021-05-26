@@ -32,7 +32,7 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
-            app:popUpTo="@id/addFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -44,7 +44,7 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/from_top"
             app:exitAnim="@anim/to_bottom"
-            app:popUpTo="@id/detailFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="carModel"

@@ -29,4 +29,20 @@ class CarRepository(private val carDao: CarDao) {
         return carDao.searchItems(query)
     }
 
+    fun searchForFastestCar():LiveData<List<CarModel>>{
+        return carDao.searchForFastestCar()
+    }
+
+    fun searchForSlowestCar():LiveData<List<CarModel>>{
+        return carDao.searchForSlowestCar()
+    }
+
+    fun searchForColor(): LiveData<List<CarModel>>{
+        return carDao.searchForColor()
+    }
+
+    fun searchFavorites(): LiveData<List<CarModel>>{
+        return carDao.searchFavorites()
+    }
+
 }

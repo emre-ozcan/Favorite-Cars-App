@@ -23,8 +23,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.models.Colors
 import com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel
+import com.emreozcan.favoritecars.data.viewmodel.SharedViewModel
 import com.emreozcan.favoritecars.databinding.FragmentDetailBinding
 import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter
 import java.util.ArrayList
@@ -33,6 +33,7 @@ import java.util.ArrayList
 class DetailFragment : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
     private val detailFragmentViewModel : DetailFragmentViewModel by viewModels()
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
@@ -61,7 +62,7 @@ class DetailFragment : Fragment() {
         val carAnim = AnimationUtils.loadAnimation(requireContext(),R.anim.alpha_anim)
         binding.detailImageView.startAnimation(carAnim)
 
-        textInputLayoutFunc()
+        textInputLayoutFunctions()
 
         binding.detailImageView.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
@@ -123,28 +124,10 @@ class DetailFragment : Fragment() {
             binding.detailImageView.setImageResource(R.drawable.ic_image_error)
         }
         if (check){
-            val car = CarModel(args.carModel.id,name,parseColor(color),hp,maxspeed,year,favorite,selectedImageBitmap!!)
+            val car = CarModel(args.carModel.id,name,sharedViewModel.parseColor(color),hp,maxspeed,year,favorite,selectedImageBitmap!!)
             detailFragmentViewModel.updateCar(car)
             Toast.makeText(requireContext(),"Car Saved",Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
-        }
-    }
-    fun parseColor(color: String): Colors {
-        return when(color){
-            "White"->{
-                Colors.White}
-            "Black"->{
-                Colors.Black}
-            "Blue"->{
-                Colors.Blue}
-            "Red"->{
-                Colors.Red}
-            "Green"->{
-                Colors.Green}
-            "Yellow"->{
-                Colors.Yellow}
-            else->{
-                Colors.Grey}
         }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -168,7 +151,7 @@ class DetailFragment : Fragment() {
             }
         }
     }
-    private fun textInputLayoutFunc() {
+    private fun textInputLayoutFunctions() {
         binding.detailNameEt.doOnTextChanged { text, start, before, count ->
             binding.detailTextInputLayoutName.error = null
         }

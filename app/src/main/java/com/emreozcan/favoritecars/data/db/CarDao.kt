@@ -25,4 +25,17 @@ interface CarDao {
     @Query("SELECT * FROM car_table WHERE name LIKE :searchQuery")
     fun searchItems(searchQuery: String): LiveData<List<CarModel>>
 
+    @Query("SELECT * FROM car_table ORDER BY maxSpeed DESC")
+    fun searchForFastestCar():LiveData<List<CarModel>>
+
+    @Query("SELECT * FROM car_table ORDER BY maxSpeed ASC")
+    fun searchForSlowestCar():LiveData<List<CarModel>>
+
+    @Query("SELECT * FROM car_table ORDER BY  color")
+    fun searchForColor():LiveData<List<CarModel>>
+
+    @Query("SELECT * FROM car_table WHERE isFavorite = 1")
+    fun searchFavorites():LiveData<List<CarModel>>
+
+
 }
