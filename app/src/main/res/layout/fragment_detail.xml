@@ -9,7 +9,7 @@
             type="com.emreozcan.favoritecars.data.models.CarModel"/>
         <variable
             name="detailFragmentViewModel"
-            type="com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel" />
+            type="com.emreozcan.favoritecars.view.fragments.detail.DetailFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

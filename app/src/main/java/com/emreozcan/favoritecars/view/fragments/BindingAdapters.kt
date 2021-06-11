@@ -1,22 +1,17 @@
 package com.emreozcan.favoritecars.view.fragments
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.view.View
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel
+import com.emreozcan.favoritecars.view.fragments.detail.DetailFragmentViewModel
 import com.emreozcan.favoritecars.view.fragments.home.HomeFragmentDirections
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BindingAdapters {
     companion object{

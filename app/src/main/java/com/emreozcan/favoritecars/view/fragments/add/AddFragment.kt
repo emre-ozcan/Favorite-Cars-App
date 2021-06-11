@@ -21,7 +21,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.viewmodel.AddFragmentViewModel
 import com.emreozcan.favoritecars.data.viewmodel.SharedViewModel
 import com.emreozcan.favoritecars.databinding.FragmentAddBinding
 import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter

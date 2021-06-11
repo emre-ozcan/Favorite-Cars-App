@@ -1,4 +1,4 @@
-package com.emreozcan.favoritecars.data.viewmodel
+package com.emreozcan.favoritecars.view.fragments.detail
 
 import android.app.Application
 import android.widget.Toast

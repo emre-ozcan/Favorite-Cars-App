@@ -2,7 +2,6 @@ package com.emreozcan.favoritecars.view.fragments.home
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.viewmodel.HomeFragmentViewModel
 import com.emreozcan.favoritecars.databinding.FragmentHomeBinding
 import com.emreozcan.favoritecars.utils.observeOnce
 import com.emreozcan.favoritecars.view.fragments.home.adapter.RecyclerRowAdapter

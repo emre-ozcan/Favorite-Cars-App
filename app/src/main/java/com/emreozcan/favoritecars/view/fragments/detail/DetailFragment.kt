@@ -23,7 +23,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.emreozcan.favoritecars.R
 import com.emreozcan.favoritecars.data.models.CarModel
-import com.emreozcan.favoritecars.data.viewmodel.DetailFragmentViewModel
 import com.emreozcan.favoritecars.data.viewmodel.SharedViewModel
 import com.emreozcan.favoritecars.databinding.FragmentDetailBinding
 import com.emreozcan.favoritecars.view.fragments.coloradapter.ColorAdapter
@@ -57,6 +56,7 @@ class DetailFragment : Fragment() {
         val carModel = args.carModel
 
 
+
         selectedImageBitmap = carModel.image
 
         val carAnim = AnimationUtils.loadAnimation(requireContext(),R.anim.alpha_anim)
@@ -76,9 +76,6 @@ class DetailFragment : Fragment() {
         binding.buttonSave.setOnClickListener {
             updateCar()
         }
-
-
-
 
         return binding.root
     }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="HomeFragmentViewModel"
-            type="com.emreozcan.favoritecars.data.viewmodel.HomeFragmentViewModel" />
+            type="com.emreozcan.favoritecars.view.fragments.home.HomeFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

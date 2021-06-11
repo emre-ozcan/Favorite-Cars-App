@@ -1,4 +1,4 @@
-package com.emreozcan.favoritecars.data.viewmodel
+package com.emreozcan.favoritecars.view.fragments.add
 
 import android.app.Application
 import androidx.core.content.ContentProviderCompat.requireContext
